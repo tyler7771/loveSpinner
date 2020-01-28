@@ -5,7 +5,16 @@ import { TweenMax as tween } from "gsap";
 
 var TweenMax: any = tween;
 
-export default class Wheel extends React.Component<any, any> {
+interface IWheelProps {
+  names: string[];
+}
+
+interface ISegmentProps {
+  fillStyle: string;
+  text: string;
+}
+
+export default class Wheel extends React.Component<IWheelProps, any> {
   constructor(props: any) {
     super(props);
     console.log(TweenMax);
@@ -17,12 +26,7 @@ export default class Wheel extends React.Component<any, any> {
   public componentDidMount() {
     this.theWheel = new Winwheel({
       numSegments: 4,
-      segments: [
-        { fillStyle: "#eae56f", text: "Prize One" },
-        { fillStyle: "#89f26e", text: "Prize Two" },
-        { fillStyle: "#7de6ef", text: "Prize Three" },
-        { fillStyle: "#e7706f", text: "Prize Four" }
-      ],
+      segments: this.createSegments(),
       animation: {
         type: "spinToStop",
         duration: 5,
@@ -46,7 +50,7 @@ export default class Wheel extends React.Component<any, any> {
     );
   }
 
-  private wheelAnimation() {
+  private wheelAnimation(e) {
     if (!this.theWheel) {
       return;
     } else {
@@ -56,5 +60,20 @@ export default class Wheel extends React.Component<any, any> {
 
   private finishedCallback() {
     console.log("finished");
+  }
+
+  private createSegments() {
+    const colors = ["#960a0a", "#eea7cb"];
+    let segments: ISegmentProps[] = [];
+
+    this.props.names.forEach((text: string, i: number) => {
+      debugger;
+      segments.push({
+        fillStyle: colors[i % colors.length],
+        text
+      });
+    });
+
+    return segments;
   }
 }

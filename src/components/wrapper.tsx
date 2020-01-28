@@ -20,6 +20,8 @@ export default class Wrapper extends React.Component<any, IWrapperState> {
 
     this.update = this.update.bind(this);
     this.addPerson = this.addPerson.bind(this);
+    this.spin = this.spin.bind(this);
+    this.removePerson = this.removePerson.bind(this);
   }
 
   public render(): JSX.Element {
@@ -32,7 +34,7 @@ export default class Wrapper extends React.Component<any, IWrapperState> {
 
   private showWheel() {
     if (this.state.showWheel) {
-      return <Wheel />;
+      return <Wheel names={this.state.names} />;
     } else {
       return (
         <>
@@ -55,6 +57,7 @@ export default class Wrapper extends React.Component<any, IWrapperState> {
               </div>
             );
           })}
+          <button onClick={this.spin}>Spin!</button>
         </>
       );
     }
@@ -91,6 +94,13 @@ export default class Wrapper extends React.Component<any, IWrapperState> {
     this.setState((prevState: IWrapperState) => ({
       ...prevState,
       names
+    }));
+  }
+
+  private spin() {
+    this.setState((prevState: IWrapperState) => ({
+      ...prevState,
+      showWheel: true
     }));
   }
 }
