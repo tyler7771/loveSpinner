@@ -1,0 +1,101 @@
+#wheel-container {
+  width: 100%;
+  position: relative;
+  height: 75vh;
+
+  #arrow {
+    border: solid $darkRed;
+    border-width: 0 15px 15px 0;
+    display: inline-block;
+    /* padding: 3px; */
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    position: absolute;
+    z-index: 20;
+    left: 49%;
+    height: 25px;
+    width: 25px;
+    top: -25px;
+  }
+
+  canvas {
+    position: absolute;
+    left: 0;
+    z-index: 5;
+  }
+
+  #button-container {
+    position: absolute;
+    top: 51%;
+    z-index: 10;
+    left: 50%;
+  }
+
+  button {
+    width: 50px;
+    height: 50px;
+    margin-top: -45px;
+    margin-left: -50px;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    transition: background 0.5s ease;
+    border: none;
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  #heart {
+    width: 100px;
+    height: 90px;
+    transition: background 0.5s ease;
+  }
+
+  #heart:before,
+  #heart:after {
+    transition: background 0.5s ease;
+    position: absolute;
+    content: "";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: $darkRed;
+    border: 5px solid white;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+
+  #heart:after {
+    left: -10px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+
+  #box {
+    position: absolute;
+    z-index: 15;
+    background: $darkRed;
+    height: 50px;
+    width: 12px;
+    transform: rotate(45deg);
+    top: 5px;
+    left: 26px;
+  }
+
+  span {
+    color: white;
+    position: absolute;
+    z-index: 20;
+    font-size: 25px;
+    font-weight: bold;
+    top: 19px;
+    left: 23%;
+    font-family: "Pacifico", cursive;
+    line-height: 25px;
+  }
+}

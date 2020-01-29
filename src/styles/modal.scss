@@ -1,0 +1,44 @@
+.modal {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+
+  #background {
+    background: rgba(0, 0, 0, 0.3);
+    height: 100%;
+  }
+
+  .container {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+
+    h2 {
+      margin: 0;
+      font-size: 50px;
+      text-shadow: -2px -2px 0 $darkSalmon, 2px -2px 0 $darkSalmon,
+        -2px 2px 0 $darkSalmon, 2px 2px 0 $darkSalmon;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: "Pacifico", cursive;
+      width: 15%;
+      font-size: 25px;
+      color: white;
+      background: $darkSalmon;
+      border: 1px solid $darkSalmon;
+      border-radius: 5px;
+      margin-top: 15px;
+
+      &:hover {
+        background: $darkRed;
+        border: 1px solid $darkRed;
+      }
+    }
+  }
+}

@@ -18,6 +18,8 @@ export default class Wrapper extends React.Component<any, IWrapperState> {
       showWheel: false
     };
 
+    document.title = "Love Spinner";
+
     this.update = this.update.bind(this);
     this.addPerson = this.addPerson.bind(this);
     this.spin = this.spin.bind(this);
@@ -27,7 +29,8 @@ export default class Wrapper extends React.Component<any, IWrapperState> {
   public render(): JSX.Element {
     return (
       <div className="App">
-        <header className="App-header">{this.showWheel()}</header>
+        <h1>Love Spinner</h1>
+        {this.showWheel()}
       </div>
     );
   }
@@ -37,7 +40,7 @@ export default class Wrapper extends React.Component<any, IWrapperState> {
       return <Wheel names={this.state.names} />;
     } else {
       return (
-        <>
+        <header className="App-header">
           <form onSubmit={e => this.addPerson(e)}>
             <input
               type="text"
@@ -47,18 +50,25 @@ export default class Wrapper extends React.Component<any, IWrapperState> {
             />
             <button type="submit">Add</button>
           </form>
-          {this.state.names.map((person: string, i: number) => {
-            return (
-              <div key={i}>
-                <span>{person}</span>
-                <button data-name={person} onClick={e => this.removePerson(e)}>
-                  x
-                </button>
-              </div>
-            );
-          })}
-          <button onClick={this.spin}>Spin!</button>
-        </>
+          <div id="people-container">
+            {this.state.names.map((person: string, i: number) => {
+              return (
+                <div className="person" key={i}>
+                  <span>{person}</span>
+                  <button
+                    data-name={person}
+                    onClick={e => this.removePerson(e)}
+                  >
+                    X
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+          <button id="spin-button" onClick={this.spin}>
+            Spin!
+          </button>
+        </header>
       );
     }
   }
